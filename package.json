@@ -1,0 +1,27 @@
+{
+  "name": "selenium_anotator",
+  "description": "anotations for selenium tests",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Andy Schulz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "8.12.x",
+    "npm": "6.4.x"
+  },
+  "dependencies": {
+    "@types/selenium-webdriver": "^3.x",
+    "@types/uuid": "^3.4.4",
+    "jasmine": "^3.4.0",
+    "selenium-webdriver": "^3.6.0",
+    "typescript": "^3.4.5",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.6.0"
+  }
+}
