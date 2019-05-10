@@ -59,4 +59,4 @@ await driver.quit();
 
 #### highlight an element when trying to interact with it
 
-![message_display](./doc/img/message_on_google_trying_to_find_element.png)
+![message_display](./doc/img/highlight_element_on_google.png)
