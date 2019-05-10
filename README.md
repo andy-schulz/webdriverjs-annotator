@@ -1,9 +1,9 @@
 # webdriverjs-annotator
 The package annotates elements with webdriverjs during test execution.
-Use the package in you framework where you wrap the ``driver.findElements()`` function
+Use the package in you framework in a ``driver.findElements()`` function wrapper.
 
-no third party libraries are loaded to display the message as it should not interfere with 
-the sites behaviour. The message is a simple div tag with inline styles
+No third party libraries are loaded to display the message as it should not interfere with 
+the sites behaviour. The message is a simple div tag with inline styles.
 
 ## Quickstart Guide
 
@@ -39,8 +39,9 @@ await Annotator.displayTestMessage(driver, `Trying to find element ${locator.toS
 const element = driver.findElement(locator);
 
 // hide the message when the element is found
-// if the element cant be found, the element is still displayed
-// and you can create a screenshot of your browser
+// if the element cant be found, the message is still displayed
+// and you can create a screenshot of your browser and reading what you did when 
+// the error occurred
 await Annotator.hideTestMessage(driver);
 
 // after removing the message the element is highlighted 
