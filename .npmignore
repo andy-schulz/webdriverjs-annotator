@@ -1,0 +1,9 @@
+src
+dist/test
+logs
+*.log
+node_modules/
+*.tgz
+.idea
+tsconfig.json
+support

@@ -2,16 +2,6 @@ import {WebDriver, WebElement} from "selenium-webdriver"
 import * as uuid from "uuid"
 
 
-export interface HighlightOptions {
-    width: number
-    color: "red"
-}
-
-const COLOR: {readonly [key: string]: string} = {
-    red: "rgba(255,0,0,1)"
-};
-
-
 export class Annotator {
     private elementBefore: any = undefined;
     private styleBefore: string = undefined;
@@ -83,7 +73,9 @@ export class Annotator {
         try {
             console.error(arguments[0]);
             if(arguments[0] && arguments[1] !== undefined) {
+                console.error("set Style");
                 arguments[0].removeAttribute("style");
+                console.error("remove Style");
                 arguments[0].setAttribute('style',arguments[1])
             }
         } catch(e) {
@@ -92,7 +84,7 @@ export class Annotator {
     };
 
     private readonly highlightElement = function (){
-        console.log(`Highlighting an element`);
+        console.error(`Highlighting an element`);
         var oldStyle = arguments[0].getAttribute('style');
 
         arguments[0].setAttribute('style', "color: Red; border: 2px solid red;");
@@ -143,17 +135,35 @@ export class Annotator {
     /**
      *
      * @param driver
-     * @param element
+     * @parm element
      */
     private hlight(driver: WebDriver, element: WebElement): Promise<void> {
         return this.promise = this.promise
-            .then(() => driver.executeScript(this.unHighlightElement,this.elementBefore,this.styleBefore))
-            .then(() => driver.executeScript(this.highlightElement,element))
+            .then(() => {
+                return new Promise((resolve, reject) => {
+                    driver.executeScript(this.unHighlightElement,this.elementBefore,this.styleBefore)
+                        .then(resolve, reject)
+                })
+            })
+            .catch((e) => {
+                if(e.toString().includes("StaleElementReferenceError")) {
+                    return;
+                }
+                return Promise.reject(e);
+            })
+            .then(() => {
+                return new Promise((resolve, reject) => {
+                    driver.executeScript(this.highlightElement,element)
+                        .then(resolve, reject)
+                })
+            })
             .then((style: any) => {
                 this.elementBefore = element;
                 this.styleBefore = style;
-            }, () => {
+            })
+            .catch((e) => {
                 this.elementBefore = undefined;
+                console.log(e);
             })
     }
 
