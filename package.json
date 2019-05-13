@@ -1,7 +1,7 @@
 {
-  "name": "webdriverjs_anotator",
-  "description": "anotations for selenium tests",
-  "version": "1.0.2",
+  "name": "webdriverjs_annotator",
+  "description": "annotations for selenium tests",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Andy Schulz",
   "license": "MIT",
