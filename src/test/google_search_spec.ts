@@ -7,7 +7,7 @@ describe('Using the Annotator', function () {
     describe('on the google search side', function () {
 
 
-        fit('should show a message on the side', async function () {
+        it('should show a message on the side', async function () {
             // Please dont use the promise manager of webdriverjs!
             promise.USE_PROMISE_MANAGER = false;
 
