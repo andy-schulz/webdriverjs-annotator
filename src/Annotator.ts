@@ -39,7 +39,6 @@ export class Annotator {
      * @returns void
      */
     private readonly displayMessage = function (): void {
-        // document.body.textContent = "";
 
         var alert = document.querySelector('#' + arguments[0]);
 
@@ -65,7 +64,11 @@ export class Annotator {
                 "margin: auto;" +
                 "text-align: center;" +
                 "");
-            document.body.appendChild(alert);
+            if(document.body)
+                document.body.appendChild(alert);
+            else
+                console.warn("can't append child as document.body is missing")
+
         }
     };
 
@@ -87,7 +90,7 @@ export class Annotator {
         console.error(`Highlighting an element`);
         var oldStyle = arguments[0].getAttribute('style');
 
-        arguments[0].setAttribute('style', "color: Red; border: 2px solid red;");
+        arguments[0].setAttribute('style', "color: red; border: 2px solid red;");
 
         return oldStyle
     };
