@@ -53,7 +53,7 @@ export class Annotator {
             alert.setAttribute('id',arguments[0]);
             alert.setAttribute('class',"alert");
             alert.setAttribute('style',"" +
-                "z-index: 50;" +
+                "z-index: 1000000;" + /* make it incredibly big so that its always on top of other elements */
                 "padding: 5px;" +
                 "background-color: #f96b6b; /* Red */" +
                 "color: white;" +
