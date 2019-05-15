@@ -8,7 +8,6 @@
         "preserveConstEnums": true,
         "inlineSourceMap": true,
         "inlineSources": true,
-        "allowJs": true,
         "rootDir": "src",
         "outDir": "dist",
         "skipLibCheck": true
