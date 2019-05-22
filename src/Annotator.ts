@@ -76,11 +76,8 @@ export class Annotator {
 
     private readonly unHighlightElement= function () {
         try {
-            console.error(arguments[0]);
             if(arguments[0] && arguments[1] !== undefined) {
-                console.error("set Style");
                 arguments[0].removeAttribute("style");
-                console.error("remove Style");
                 arguments[0].setAttribute('style',arguments[1])
             }
         } catch(e) {
@@ -90,11 +87,16 @@ export class Annotator {
 
     private readonly highlightElement = function (){
         console.error(`Highlighting an element`);
-        var oldStyle = arguments[0].getAttribute('style');
+        if(arguments[0]) {
+            const oldStyle = arguments[0].getAttribute('style');
 
-        arguments[0].setAttribute('style', "color: red; border: 2px solid red;");
+            arguments[0].setAttribute('style', "color: red; border: 2px solid red;");
 
-        return oldStyle
+            return oldStyle
+        }
+
+        return;
+
     };
 
     /**

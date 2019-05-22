@@ -41,7 +41,7 @@ describe("Using the Annotate object", () => {
 
         it('should display the test message', async function () {
 
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const uuid = await Annotator.displayTestMessage(driver, "trying to find element by Xpath: //*/button[contains(., '1')]");
             const element = await driver.findElement(By.css(`#${uuid}`));
@@ -62,7 +62,7 @@ describe("Using the Annotate object", () => {
     describe('to highlight an element', function () {
 
         it('should succeed if one element is highlighted two times', async function () {
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const element1 = await driver.findElement(By.xpath("//*/button[contains(., '1')]"));
             await Annotator.highlight(driver, element1);
@@ -75,14 +75,14 @@ describe("Using the Annotate object", () => {
         });
 
         it('should highlight the element again after page reload', async function () {
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const element1 = await driver.findElement(By.xpath("//*/button[contains(., '1')]"));
             await Annotator.highlight(driver, element1);
             expect(await element1.getAttribute('style')).toBe("color: red; border: 2px solid red;",
                 "check element1 after it was highlighted");
 
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const element11 = await driver.findElement(By.xpath("//*/button[contains(., '1')]"));
             await Annotator.highlight(driver, element11);
@@ -92,7 +92,7 @@ describe("Using the Annotate object", () => {
 
         it('should highlight the calculator button', async function () {
 
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const element = await driver.findElement(By.xpath("//*/button[contains(., '1')]"));
 
@@ -108,7 +108,7 @@ describe("Using the Annotate object", () => {
 
         it('should unhighlight the first element when the second element is highlighted', async function () {
 
-            await driver.get('http://localhost:3000');
+            await driver.get('https://ahfarmer.github.io/calculator/');
 
             const element1 = await driver.findElement(By.xpath("//*/button[contains(., '1')]"));
             const element2 = await driver.findElement(By.xpath("//*/button[contains(., '2')]"));
@@ -139,7 +139,7 @@ describe("Using the Annotate object", () => {
     describe('on the google seach side', function () {
 
         it('should show a message on the side', async function () {
-            await driver.get("www.google.com");
+            await driver.get("https://www.google.com");
 
             await Annotator.displayTestMessage(driver, "I am on the Google search side");
 
